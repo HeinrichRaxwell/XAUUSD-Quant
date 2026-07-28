@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --surface: #0e1511;
+  --surface-container-lowest: #09100c;
+  --surface-container-low: #161d19;
+  --surface-container: #1a211d;
+  --surface-container-high: #242c27;
+  --surface-container-highest: #2f3632;
+  
+  --primary: #4edea3;
+  --primary-container: #10b981;
+  --on-primary-container: #00422b;
+  
+  --secondary: #ffca45;
+  --tertiary: #ffb3af;
+  --error: #ffb4ab;
+  
+  --on-surface: #dde4dd;
+  --on-surface-variant: #bbcabf;
+  --outline: #86948a;
+  --outline-variant: #3c4a42;
+  
+  font-family: 'Inter', sans-serif;
+  color-scheme: dark !important;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  background-color: #0e1511 !important;
+  color: #dde4dd !important;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Glass & Card Utilities matching QuantOS */
+.quant-card {
+  background-color: #1a211d !important;
+  border: 1px solid #3c4a42 !important;
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+  overflow: hidden;
+}
+
+.quant-card:hover {
+  border-color: #86948a !important;
+}
+
+.quant-card-low {
+  background-color: #161d19 !important;
+  border: 1px solid #3c4a42 !important;
+  border-radius: 6px;
+}
+
+.glass-card {
+  background-color: #131722 !important;
+  border: 1px solid #242c27 !important;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Strict Dark Theme Enforcement on ALL TradingView Widgets & Iframes */
+iframe,
+.tradingview-widget-container,
+.tradingview-widget-container iframe,
+.tradingview-widget-container__widget,
+.tradingview-widget-container__widget iframe {
+  background-color: #131722 !important;
+  color-scheme: dark !important;
+  border: none !important;
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09100c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3c4a42;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4edea3;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

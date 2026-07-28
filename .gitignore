@@ -1,0 +1,53 @@
+# Python / Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Node.js / React Frontend
+node_modules/
+dashboard_frontend/node_modules/
+dashboard_frontend/dist/
+dashboard_frontend/.vite/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.production
+*.pem
+*.key
+
+# Persistent State & Dynamic Output Artifacts
+state/*.txt
+!state/.gitkeep
+output/*.png
+output/*.jpg
+output/telegram_offset.json
+
+# IDE / OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
