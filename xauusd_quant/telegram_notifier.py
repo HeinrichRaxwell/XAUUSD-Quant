@@ -360,7 +360,7 @@ class TelegramNotifier:
                     elif cmd == "/help":
                         reply = (
                             f"🤖 *XAUQUANT BOT COMMANDS (REALTIME)* 🤖\n\n"
-                            f"• `/status` - Menampilkan analisis Monte Carlo 10,000 simulasi & chart sinyal Gigantum realtime\n"
+                            f"• `/status` - Menampilkan analisis Monte Carlo 10,000 simulasi & chart sinyal QuantOS realtime\n"
                             f"• `/positions` - Menampilkan daftar posisi trading aktif MT5 & floating PnL realtime\n"
                             f"• `/balance` - Menampilkan status saldo & equity akun Exness MT5 realtime\n"
                             f"• `/closeall` - Darurat: Menutup seluruh transaksi aktif di MT5\n"

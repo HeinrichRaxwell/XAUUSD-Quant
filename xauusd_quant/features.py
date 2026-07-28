@@ -3,7 +3,7 @@ import numpy as np
 
 class FeatureEngineer:
     """
-    Computes Advanced Quant Features from Gigantum Stock Analyzer:
+    Computes Advanced Quant Features for QuantOS Analyzer:
     - Technical Indicators: EMA20, EMA50, RSI14, ATR14, MACD, Stochastic %K/%D, ADX14 (+DI/-DI), BB Position
     - Smart Money Concepts (SMC): Supply/Demand Zone Proximity, Fair Value Gap (FVG Imbalance)
     - Full Candlestick Suite: Pinbar, Engulfing, Doji, Inside Bar, Morning/Evening Star, 3 Soldiers/Crows, Hammer/Shooting Star, Piercing Line, Dark Cloud

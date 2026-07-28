@@ -20,7 +20,7 @@ export default function SignalChartViewer({ chartUrl, onRefreshChart }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Image size={18} color="#f59e0b" />
           <h4 style={{ fontSize: '0.95rem', fontWeight: 700 }}>
-            Gigantum AI Candlestick Chart (Python Engine)
+            QuantOS AI Candlestick Chart (Python Engine)
           </h4>
         </div>
         
@@ -68,7 +68,7 @@ export default function SignalChartViewer({ chartUrl, onRefreshChart }) {
       <div style={{ flex: 1, overflow: 'hidden', borderRadius: '8px', border: '1px solid var(--border-card)', background: '#000', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <img
           src={srcWithCacheBust}
-          alt="XAUUSD Gigantum Signal Chart"
+          alt="XAUUSD QuantOS Signal Chart"
           style={{ width: '100%', height: '100%', objectFit: 'contain', cursor: 'pointer' }}
           onClick={() => setIsModalOpen(true)}
           onError={(e) => {
@@ -117,7 +117,7 @@ export default function SignalChartViewer({ chartUrl, onRefreshChart }) {
             </button>
             <img
               src={srcWithCacheBust}
-              alt="Gigantum Chart Full Resolution"
+              alt="QuantOS Chart Full Resolution"
               style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 0 40px rgba(0,0,0,0.8)' }}
             />
           </div>

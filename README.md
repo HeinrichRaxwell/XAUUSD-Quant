@@ -1,10 +1,4 @@
 <div align="center">
-  <img src="assets/quantos_banner.jpg" alt="QuantOS Banner" width="100%" style="border-radius: 8px;" />
-
-  <br />
-  <br />
-
-  <img src="assets/quantos_logo.jpg" alt="QuantOS Logo" width="120" style="border-radius: 50%;" />
 
   # ⚡ QuantOS Terminal & XAUUSD Auto-Trader
 
@@ -130,6 +124,6 @@ python run_all.py --threshold 0.60 --loop
 
 ## 📄 License & Disclaimer
 
-Distributed under the **MIT License**.
+Distributed under the **MIT License**. See `LICENSE` for details.
 
 > **Risk Warning**: Quantitative trading on Gold (XAUUSD) carries significant financial risk due to market leverage. Past performance in backtesting or Monte Carlo simulations does not guarantee future results.

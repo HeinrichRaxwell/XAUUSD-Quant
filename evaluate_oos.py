@@ -24,7 +24,7 @@ def run_strict_oos_analysis():
     loader = XauDataLoader(start_date="2021-01-01")
     raw_df = loader.fetch_data(symbol="XAUUSD", count=1500)
 
-    # 2. Extract Complete Gigantum Feature Suite
+    # 2. Extract Complete QuantOS Feature Suite
     fe = FeatureEngineer()
     df_features = fe.add_features(raw_df)
     total_bars = len(df_features)
@@ -67,10 +67,10 @@ def run_strict_oos_analysis():
     mc_base = MonteCarloEngine(initial_balance=70.0).run_trade_bootstrapping(trades_base, num_simulations=1000)
 
     # --------------------------------------------------------------------------
-    # CONFIG B: GIGANTUM SUITE (WITH TRIPLE BARRIER ML PREDICTIONS)
+    # CONFIG B: QUANTOS SUITE (WITH TRIPLE BARRIER ML PREDICTIONS)
     # --------------------------------------------------------------------------
-    print("\n--- [2/3] Training & Evaluating CONFIG B (Gigantum Suite) on UNSEEN DATA ---")
-    model_gig = XauMLModel(forward_bars=5, prob_threshold=0.55, model_dir="models_oos_gig")
+    print("\n--- [2/3] Training & Evaluating CONFIG B (QuantOS Suite) on UNSEEN DATA ---")
+    model_gig = XauMLModel(forward_bars=5, prob_threshold=0.55, model_dir="models_oos_quant")
     X_train_gig, y_train_gig = model_gig.prepare_data(train_df)
     model_gig.train(X_train_gig, y_train_gig)
 
@@ -84,9 +84,9 @@ def run_strict_oos_analysis():
     mc_gig = MonteCarloEngine(initial_balance=70.0).run_trade_bootstrapping(trades_gig, num_simulations=1000)
 
     # --------------------------------------------------------------------------
-    # CONFIG C: GIGANTUM SUITE + 1:2.5 ASYMMETRIC RISK-REWARD + ADX TREND FILTER
+    # CONFIG C: QUANTOS SUITE + 1:2.5 ASYMMETRIC RISK-REWARD + ADX TREND FILTER
     # --------------------------------------------------------------------------
-    print("\n--- [3/3] Evaluating CONFIG C (Gigantum + 1:2.5 RR + ADX Trend Filter) on UNSEEN DATA ---")
+    print("\n--- [3/3] Evaluating CONFIG C (QuantOS + 1:2.5 RR + ADX Trend Filter) on UNSEEN DATA ---")
     model_opt = XauMLModel(forward_bars=5, prob_threshold=0.55, model_dir="models_oos_opt")
     X_train_opt, y_train_opt = model_opt.prepare_data(train_df)
     model_opt.train(X_train_opt, y_train_opt)
@@ -121,7 +121,7 @@ def run_strict_oos_analysis():
     print("\n==========================================================================")
     print("      OUT-OF-SAMPLE (UNSEEN DATA) COMPARATIVE PERFORMANCE REPORT           ")
     print("==========================================================================")
-    print(f"{'METRIC':<22} | {'CONFIG A (Base)':<18} | {'CONFIG B (Gigantum)':<20} | {'CONFIG C (SMC Filtered)':<22}")
+    print(f"{'METRIC':<22} | {'CONFIG A (Base)':<18} | {'CONFIG B (QuantOS)':<20} | {'CONFIG C (SMC Filtered)':<22}")
     print("-" * 90)
     print(f"{'Total Trades (Unseen)':<22} | {metrics_base['Total_Trades']:<18} | {metrics_gig['Total_Trades']:<20} | {metrics_opt['Total_Trades']:<22}")
     print(f"{'Win Rate (%)':<22} | {metrics_base['Win_Rate_%']:<18.2f} | {metrics_gig['Win_Rate_%']:<20.2f} | {metrics_opt['Win_Rate_%']:<22.2f}")
@@ -134,7 +134,7 @@ def run_strict_oos_analysis():
     # Save OOS Chart
     fig, ax = plt.subplots(figsize=(10, 5))
     ax.plot(metrics_base.get("Equity_Curve", [70]), label="Config A (Baseline)", color="red", linestyle="--")
-    ax.plot(metrics_gig.get("Equity_Curve", [70]), label="Config B (Gigantum)", color="orange", linestyle=":")
+    ax.plot(metrics_gig.get("Equity_Curve", [70]), label="Config B (QuantOS)", color="orange", linestyle=":")
     ax.plot(metrics_opt.get("Equity_Curve", [70]), label="Config C (SMC Trend Filtered)", color="green", linewidth=2)
     ax.set_title("Out-Of-Sample Equity Curves on 100% Unseen MT5 Data", fontsize=12)
     ax.set_xlabel("Trades")
