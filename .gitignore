@@ -51,3 +51,8 @@ output/telegram_offset.json
 .idea/
 .DS_Store
 Thumbs.db
+
+# Agent & Project Memory Files
+AGENT_MEMORY.md
+PROJECT_MEMORY.md
+*_MEMORY.md

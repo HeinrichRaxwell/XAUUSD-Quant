@@ -159,7 +159,7 @@ def execute_pipeline(prob_threshold: float = 0.65, verbose_log: bool = True):
                         time.sleep(0.5)
                         current_atr = float(df_feat["ATR"].iloc[-1])
                         sl_dist = round(current_atr * 1.5, 2)
-                        tp_dist = round(current_atr * 3.0, 2)
+                        tp_dist = round(current_atr * 1.6, 2)
                         mt5.execute_trade(signal_type="BUY", lot_size=0.01, sl_pips=sl_dist, tp_pips=tp_dist)
                         record_trade_time()
                 elif ptype == "SELL" and mc_direction == "BUY" and (sig_direction != "BUY" or not trade_cooldown_ok):
@@ -174,7 +174,7 @@ def execute_pipeline(prob_threshold: float = 0.65, verbose_log: bool = True):
                         time.sleep(0.5)
                         current_atr = float(df_feat["ATR"].iloc[-1])
                         sl_dist = round(current_atr * 1.5, 2)
-                        tp_dist = round(current_atr * 3.0, 2)
+                        tp_dist = round(current_atr * 1.6, 2)
                         mt5.execute_trade(signal_type="SELL", lot_size=0.01, sl_pips=sl_dist, tp_pips=tp_dist)
                         record_trade_time()
                 elif ptype == "BUY" and mc_direction == "SELL" and (sig_direction != "SELL" or not trade_cooldown_ok):
@@ -189,7 +189,7 @@ def execute_pipeline(prob_threshold: float = 0.65, verbose_log: bool = True):
                 # ATR-dynamic SL/TP for new entries
                 current_atr = float(df_feat["ATR"].iloc[-1])
                 sl_dist = round(current_atr * 1.5, 2)
-                tp_dist = round(current_atr * 3.0, 2)
+                tp_dist = round(current_atr * 1.6, 2)
                 logger.info(f"      ATR-Dynamic SL: ${sl_dist:.2f} | TP: ${tp_dist:.2f}")
                 mt5.execute_trade(signal_type=sig_direction, lot_size=0.01, sl_pips=sl_dist, tp_pips=tp_dist)
                 record_trade_time()

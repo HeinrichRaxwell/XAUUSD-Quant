@@ -129,20 +129,18 @@ class MT5Bridge:
         is_london_ny_session = (14 <= curr_hour or curr_hour <= 3)
         atr_multiplier = 2.0 if is_london_ny_session else 1.6
 
-        # Dynamic Breathing Room Trailing Stop Engine (NO $0.10 BEP Trigger)
-        # 1. Profit >= $10.00 (100 pips): SL trails exactly 50 pips ($5.00) behind current price
-        # 2. Profit >= $5.00 (50 pips): SL locks +25 pips (+$2.50 profit guaranteed, NOT $0.10)
-        # 3. Profit < $5.00 (< 50 pips): SL stays at initial ATR risk level (Full market breathing room)
-        if profit >= 10.00:
-            tier_reason = f"FIXED_50PIPS_BREATHING_ROOM_TRAIL ({int(profit)}USD)"
-            breathing_room_usd = 5.00
-            if is_buy:
-                target_sl = round(curr_price - breathing_room_usd, digits)
-            else:
-                target_sl = round(curr_price + breathing_room_usd, digits)
+        # Dynamic Peak Profit Ratchet Engine (Locks Peak Gains & Prevents Giving Profit Back)
+        if profit >= 15.00:
+            tier_reason = f"PEAK_RATCHET_LOCK_15USD ({int(profit)}USD)"
+            # Lock +$12.00 (+120 pips / 80% of peak profit) when profit >= $15.00
+            target_sl = round(entry_price + 12.00, digits) if is_buy else round(entry_price - 12.00, digits)
+        elif profit >= 10.00:
+            tier_reason = f"PEAK_RATCHET_LOCK_10USD ({int(profit)}USD)"
+            # Lock +$7.00 (+70 pips / 70% of peak profit) when profit >= $10.00
+            target_sl = round(entry_price + 7.00, digits) if is_buy else round(entry_price - 7.00, digits)
         elif profit >= 5.00:
-            tier_reason = "LOCK_25PIPS_AT_50PIPS_PROFIT"
-            # At 50 pips ($5.00 profit), lock at least +25 pips (+$2.50 profit)
+            tier_reason = "PEAK_RATCHET_LOCK_5USD"
+            # Lock +$2.50 (+25 pips) when profit >= $5.00
             target_sl = round(entry_price + 2.50, digits) if is_buy else round(entry_price - 2.50, digits)
 
         if not tier_reason:
